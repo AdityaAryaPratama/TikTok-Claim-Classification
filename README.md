@@ -28,6 +28,11 @@ In the given scenario, it's better for the model to predict false positives when
 Because it's more important to minimize false negatives, the model evaluation metric will be **recall**. Also **Receiver Operating Characteristic** and **The Area Under the Curve** to evaluate the model's ability to distinguish between the classes.
 
 # Data Understanding
+This project uses a dataset called tiktok_dataset.csv. It contains synthetic data created for this project in partnership with TikTok. Examine each data variable gathered. 
+
+**19,383** rows – Each row represents a different published TikTok video in which a claim/opinion has been made.
+
+**12** columns 
 ### Attribute Information
 
 | Attribute | Data Type, Length | Description |
