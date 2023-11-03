@@ -1,12 +1,31 @@
 # TikTok-Claim-Classification
 
 # Bussiness Problem Understanding
+## Context
+
 TikTok users have the ability to report videos and comments that contain user claims. These reports identify content that needs to be reviewed by moderators. This process generates a large number of user reports that are difficult to address quickly. 
 
 
 TikTok is working on the development of a predictive model that can determine whether a video contains a claim or offers an opinion. Videos that are labeled opinions will be less likely to go on to be reviewed by a human moderator. Videos that are labeled as claims will be further sorted by a downstream process to determine whether they should get prioritized for review. 
 
 With a successful prediction model, TikTok can reduce the backlog of user reports and prioritize them more efficiently.
+
+## Goals
+
+We wants to build a machine learning model to help identify claims and opinions. Videos that are labeled opinions will be less likely to go on to be reviewed by a human moderator. Videos that are labeled as claims will be further sorted by a downstream process to determine whether they should get prioritized for review. For example, perhaps videos that are classified as claims would then be ranked by how many times they were reported, then the top x% would be reviewed by a human each day.
+
+A machine learning model would greatly assist in the effort to present human moderators with videos that are most likely to be in violation of TikTok's terms of service.
+
+## Evaluation Metric
+
+The evaluation metrics such as ROC AUC score, recall, precision, and F1-score are commonly used for classification tasks. Each metric provides a different perspective on how well your model is performing. To determine which evaluation metric might be best, consider how the model might be wrong. There are two possibilities for bad predictions:
+
+- **False positives:** When the model predicts a video is a claim when in fact it is an opinion
+- **False negatives:** When the model predicts a video is an opinion when in fact it is a claim
+
+In the given scenario, it's better for the model to predict false positives when it makes a mistake, and worse for it to predict false negatives. It's very important to identify videos that break the terms of service, even if that means some opinion videos are misclassified as claims. The worst case for an opinion misclassified as a claim is that the video goes to human review. The worst case for a claim that's misclassified as an opinion is that the video does not get reviewed _and_ it violates the terms of service. A video that violates the terms of service would be considered posted from a "banned" author, as referenced in the data dictionary.
+
+Because it's more important to minimize false negatives, the model evaluation metric will be **recall**. Also **Receiver Operating Characteristic** and **The Area Under the Curve** to evaluate the model's ability to distinguish between the classes.
 
 # Data Understanding
 ### Attribute Information
